@@ -12,6 +12,14 @@ class Question extends Model {
     protected $casts = [
         'source' => 'object'
     ];
+    protected $hidden = [
+        'language_id',
+        'category_id',
+        'question_type_id',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
 
     public function responses() {
         return $this->hasMany(Response::class);

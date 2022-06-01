@@ -9,4 +9,10 @@ class Response extends Model {
     use HasFactory;
 
     protected $table = 'response';
+    protected $casts = [
+        'is_correct' => 'boolean'
+    ];
+    protected $hidden = [
+        'question_id',
+    ];
 }
