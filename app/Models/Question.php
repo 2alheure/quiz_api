@@ -36,4 +36,8 @@ class Question extends Model {
     public function type() {
         return $this->belongsTo(QuestionType::class, 'question_type_id');
     }
+
+    public function sessions() {
+        return $this->belongsToMany(Token::class, 'session', 'question_id', 'token_id');
+    }
 }

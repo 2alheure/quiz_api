@@ -17,9 +17,9 @@ class QuestionController extends Controller {
 
         if (!empty($request->category)) $qb->where('category_id', $request->category);
         if (!empty($request->difficulty)) $qb->whereBetween('estimated_difficulty', [$request->difficulty - 5, $request->difficulty + 5]);
-        // if (!empty($language = $request->language)) $qb->whereHas('language', function (Builder $qb) use ($language) {
-        //     $qb->where('abbr', $language);
-        // });
+        if (!empty($language = $request->language)) $qb->whereHas('language', function (Builder $qb) use ($language) {
+            $qb->where('abbr', $language);
+        });
 
         return new JsonResponse($qb->simplePaginate($request->limit ?? static::DEFAULT_LIMIT));
     }
