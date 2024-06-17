@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/', 'App\Http\Controllers\QuestionController@get');
+Route::get('/categories', 'App\Http\Controllers\CategoryController@get');
+Route::get('/session', 'App\Http\Controllers\SessionController@requestSession');
